@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Courses</title>
+
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            render(){
+                return(
+                    <div className="app-content">
+                        <h1>React course</h1>
+                        <h2>First lesson</h2>
+                        <p> When creating react component we use class as in javascript but it has to extend react component and it must have at least
+                        one method render which must return an element.
+                        </p>
+                        <p> You can only return one element in jsx, for example a division, and you cannot use class as a keyword because it's reserved
+                        for creating classes, use className instead.
+                        </p>
+                        <p> To render the react component we have to stick it in react DOM. The render method has two parameters, the first says which
+                        component we want to render and the second says where we want to render our component. We use the html element signs and
+                        the name of our react component for react components and in this case we want to render it to the division which is name
+                        app, therefore we can search it by id in this document. We also use babel to help the syntax in browsers by adding the script
+                        in the head. React is good for outputting dynamic js content in p tag in curly braces which is the main point in react.
+                        </p>
+                        <p>
+                        {Math.random() * 10}
+                        </p>
+                    </div>
+                )
+            }
+        }
+
+    ReactDOM.render(<App />, document.getElementByID("app"));
+    </script>
+</body>
+
+</html>
