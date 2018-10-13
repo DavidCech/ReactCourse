@@ -14,9 +14,14 @@
 
 <script type="text/babel">
     class App extends React.Component {
+        state = {
+            name: 'David',
+            age: 17
+        }
         render(){
             return(
                 <div className="app-content">
+
                     <h1>React course</h1>
                     <h2>First lesson</h2>
                     <p> When creating react component we use class as in javascript but it has to extend react component and it must have at least
@@ -29,10 +34,24 @@
                         component we want to render and the second says where we want to render our component. We use the html element signs and
                         the name of our react component for react components and in this case we want to render it to the division which is name
                         app, therefore we can search it by id in this document. We also use babel to help the syntax in browsers by adding the script
-                        in the head. React is good for outputting dynamic js content in p tag in curly braces which is the main point in react.
+                        in the head. React is good for outputting dynamic js content in p tag in curly braces which is the main point in react. Like a
+                        random number for example.
                     </p>
                     <p>
                         {Math.random() * 10}
+                    </p>
+                    <h2>Second lesson</h2>
+                    <p> Another extremely important part of react is state of a component. State describes the data of a component or UI-state.
+                        State dynamicly updates the output of the data which are stored locally. There are multiple ways of implementation of the
+                        state of a react component, one of them being defining state property inside the javascript class itself as a javascript
+                        object and inserting the data it begins with when it first loads. When we want to use the state we have to use the word this
+                        which refers to this react component or something else to identify the component. For example:
+                    </p>
+                    <p>
+                        My name is {this.state.name} and I am {this.state.age}
+                    </p>
+                    <p>
+                        We can also define a state in the constructor method.
                     </p>
                 </div>
             )
