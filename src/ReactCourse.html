@@ -18,34 +18,60 @@
             name: 'David',
             age: 17
         }
+
+        handleButtonClick = e => {
+            this.setState({
+                name: 'Dan',
+                age: 23
+            });
+            console.log(this.state);
+        }
+        handleButtonHover(e){
+            console.log(e.target, e.pageX);
+        }
+        handleParagraphCopy(e){
+            console.log("Try being original you filthy scrub");
+        }
+        handleFormChange = e => {
+            this.setState({
+                name: e.target.value
+            })
+        }
+        handleFormSubmit = e => {
+            console.log("Form submitted", this.state.name);
+            e.preventDefault();
+        }
         render(){
             return(
                 <div className="app-content">
 
                     <h1>React course</h1>
                     <h2>First lesson</h2>
-                    <p> When creating react component we use class as in javascript but it has to extend react component and it must have at least
-                        one method render which must return an element.
+                    <p> When creating react component we use class as in javascript but it has to extend react component
+                        and it must have at least one method render which must return an element.
                     </p>
-                    <p> You can only return one element in jsx, for example a division, and you cannot use class as a keyword because it's reserved
-                        for creating classes, use className instead.
+                    <p> You can only return one element in jsx, for example a division, and you cannot use class as a
+                        keyword because it's reserved for creating classes, use className instead.
                     </p>
-                    <p> To render the react component we have to stick it in react DOM. The render method has two parameters, the first says which
-                        component we want to render and the second says where we want to render our component. We use the html element signs and
-                        the name of our react component for react components and in this case we want to render it to the division which is name
-                        app, therefore we can search it by id in this document. We also use babel to help the syntax in browsers by adding the script
-                        in the head. React is good for outputting dynamic js content in p tag in curly braces which is the main point in react. Like a
-                        random number for example.
+                    <p> To render the react component we have to stick it in react DOM. The render method has two parameters,
+                        the first says which component we want to render and the second says where we want to render our
+                        component. We use the html element signs and the name of our react component for react components
+                        and in this case we want to render it to the division which is name app, therefore we can search
+                        it by id in this document. We also use babel to help the syntax in browsers by adding the script
+                        in the head. React is good for outputting dynamic js content in p tag in curly braces which is
+                        the main point in react. Like a random number for example.
                     </p>
                     <p>
                         {Math.random() * 10}
                     </p>
+
                     <h2>Second lesson</h2>
-                    <p> Another extremely important part of react is state of a component. State describes the data of a component or UI-state.
-                        State dynamicly updates the output of the data which are stored locally. There are multiple ways of implementation of the
-                        state of a react component, one of them being defining state property inside the javascript class itself as a javascript
-                        object and inserting the data it begins with when it first loads. When we want to use the state we have to use the word this
-                        which refers to this react component or something else to identify the component. For example:
+                    <p> Another extremely important part of react is state of a component. State describes the data of a
+                        component or UI-state. State dynamically updates the output of the data which are stored locally.
+                        There are multiple ways of implementation of the state of a react component, one of them being
+                        defining state property inside the javascript class itself as a javascript object and inserting
+                        the data it begins with when it first loads. When we want to use the state we have to use the word
+                        this which refers to this react component or something else to identify the component. For example:
                     </p>
                     <p>
                         My name is {this.state.name} and I am {this.state.age}
@@ -53,6 +79,37 @@
                     <p>
                         We can also define a state in the constructor method.
                     </p>
+
+                    <h2>Third lesson</h2>
+                    <p onCopy={this.handleParagraphCopy}>This lesson we will be handling events first of all
+                        we will create a button with a js function which triggers on click. This particular
+                        function will only say in the console on what did the user click. We have to remember to refer
+                        to the function with this because it's inside this particular component. Also it is important
+                        to note that we don't want to invoke the function with parentheses. Same with the second button
+                        only we handle the mouse over event. Last thing we do is to handle the event when someone tries
+                        to copy this paragraph.
+                    </p>
+                    <button onClick={this.handleButtonClick}>Click me</button>
+                    <button onMouseOver={this.handleButtonHover}>Hover me</button>
+
+                    <h2>Fourth lesson</h2>
+                    <p> In this lesson we'll learn how to change the state of a component with an event handler. When
+                        we want to use this keyword in a function it won't work since it won't know what is this referring
+                        to. If it's an arrow function though it will refer to the component and we will be able to use
+                        this keyword. Example would be the click handler from last lesson. Also when changing the state
+                        of the component we shouldn't change the state directly, instead we should use set state.
+                    </p>
+                    <h2>Fifth lesson</h2>
+                    <p> In this lesson we'll create a simple form in which the user will be able to submit their name.
+                        We use the form to do that. Interesting is that onSubmit captures both when user presses enter
+                        and when they click on a button inside the form. We don't want the page to refresh when user
+                        submits their answer therefore we change the default behavior in the js function.
+                    </p>
+                    <h3> My name is {this.state.name} </h3>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <input type="text" onChange={this.handleFormChange} />
+                        <button> Submit </button>
+                    </form>
                 </div>
             )
         }
